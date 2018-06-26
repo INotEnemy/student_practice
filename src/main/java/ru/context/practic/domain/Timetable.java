@@ -72,5 +72,4 @@ public class Timetable {
         this.num = num;
     }
 
-
 }
