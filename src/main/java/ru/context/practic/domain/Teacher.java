@@ -24,7 +24,7 @@ public class Teacher {
 
     @Column
     private double load;
-
+    @OneToMany
     private ArrayList<Timetable> worksChedule ;
 
     public Teacher() {
