@@ -1,6 +1,7 @@
-package ru.context.practic.domain;
+package ru.context.practic.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 public class Student {
@@ -21,11 +22,11 @@ public class Student {
     @Column
     private int level;
 
-    @Column
-    private double marks;
+    @OneToMany
+    private ArrayList<Marks> marks;
 
-    @Column
-    private double attendance;
+    @OneToMany
+    private ArrayList<Attendance> attendance ;
 
     public Student() {
     }
@@ -35,8 +36,8 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.level = 1;
-        this.marks = 0;
-        this.attendance = 100;
+        this.marks = null;
+        this.attendance = null;
     }
 
     public Integer getId() {
@@ -74,22 +75,5 @@ public class Student {
     public void setLevel(int level) {
         this.level = level;
     }
-
-    public double getMarks() {
-        return marks;
-    }
-
-    public void setMarks(double marks) {
-        this.marks = marks;
-    }
-
-    public double getAttendance() {
-        return attendance;
-    }
-
-    public void setAttendance(double attendance) {
-        this.attendance = attendance;
-    }
-
 
 }

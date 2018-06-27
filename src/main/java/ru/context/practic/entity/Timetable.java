@@ -1,4 +1,4 @@
-package ru.context.practic.domain;
+package ru.context.practic.entity;
 
 
 import javax.persistence.*;
@@ -71,6 +71,5 @@ public class Timetable {
     public void setNumber(int num) {
         this.num = num;
     }
-
-
 }
+

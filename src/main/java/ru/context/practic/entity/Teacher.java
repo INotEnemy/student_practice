@@ -1,4 +1,4 @@
-package ru.context.practic.domain;
+package ru.context.practic.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class Teacher {
 
     @Column
     private double load;
+
     @OneToMany
     private ArrayList<Timetable> worksChedule ;
 
@@ -82,7 +83,4 @@ public class Teacher {
     public void setLoad(double load) {
         this.load = load;
     }
-
-
-
 }
