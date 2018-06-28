@@ -8,7 +8,7 @@ public interface TeacherService {
 
     Teacher addTeacher(Teacher techer);
     void delete (Long id);
-    List getByLastName(String name);
+    Teacher getByLastName(String name);
     Teacher editTeacher(Teacher teacher);
     Teacher getById (Long id);
 }

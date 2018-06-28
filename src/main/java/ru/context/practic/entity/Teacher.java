@@ -1,6 +1,7 @@
 package ru.context.practic.entity;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
 import java.util.ArrayList;
 
 @Entity
@@ -25,8 +26,11 @@ public class Teacher {
     @Column
     private double load;
 
-    @OneToMany
-    private ArrayList<Timetable> worksChedule ;
+    @ManyToOne
+    @JoinColumn(name = "tt_id")
+    private Timetable timetable;
+
+    //TODO Разобраться с настройкой зависимостей сущностей
 
     public Teacher() {
     }

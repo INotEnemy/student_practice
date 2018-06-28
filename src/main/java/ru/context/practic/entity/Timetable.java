@@ -2,6 +2,7 @@ package ru.context.practic.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Timetable {
@@ -20,10 +21,10 @@ public class Timetable {
     private int endTime;
 
     @Column
-    private String subject;
+    private String amountSubjects;
 
-    @Column
-    private int room;
+    @OneToMany(mappedBy = "timetable", fetch = FetchType.EAGER)
+    private List<Teacher> teachers;
 
     public Timetable() {
     }
@@ -48,20 +49,12 @@ public class Timetable {
         this.endTime = endTime;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getAmountSubjectsSubject() {
+        return amountSubjects;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public int getRoom() {
-        return room;
-    }
-
-    public void setRoom(int room) {
-        this.room = room;
+    public void setAmountSubjectsSubject(String amountSubjects) {
+        this.amountSubjects = amountSubjects;
     }
 
     public int getNum() {
