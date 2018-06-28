@@ -8,7 +8,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private String firstName;
@@ -31,7 +31,7 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(Integer id, String firstName, String lastName, String department, String post, double load) {
+    public Teacher(Long id, String firstName, String lastName, String department, String post, double load) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,7 +40,7 @@ public class Teacher {
         this.load = load;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
