@@ -1,6 +1,7 @@
 package ru.context.practic.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ public class Attendance {
     private Integer id;
 
     @Column
-    private int data;
+    private Date data;
 
     @Column
     private boolean attendance;
@@ -22,11 +23,11 @@ public class Attendance {
         return id;
     }
 
-    public int getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

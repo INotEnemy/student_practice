@@ -16,6 +16,7 @@ public class Profession {
     public Integer getId() {
         return id;
     }
+
     @OneToMany(mappedBy = "profession", fetch = FetchType.EAGER)
     private List<Student> students;
 

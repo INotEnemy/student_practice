@@ -85,4 +85,9 @@ public class Teacher {
     public void setLoad(double load) {
         this.load = load;
     }
+
+    public Timetable getTimetable() {
+        return timetable;
+    }
+
 }

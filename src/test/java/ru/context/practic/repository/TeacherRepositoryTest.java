@@ -1,19 +1,14 @@
 package ru.context.practic.repository;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import ru.context.practic.PracticApplicationTests;
 import ru.context.practic.entity.Teacher;
-import ru.context.practic.service.TeacherService;
 import ru.context.practic.service.impl.TeacherServiceImpl;
 
-import static org.junit.Assert.*;
-
 public class TeacherRepositoryTest extends PracticApplicationTests {
-
 
     @Autowired
     private TeacherServiceImpl teacherServiceIml;
@@ -28,13 +23,13 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
     }
 
     @Test
-    public void  testSelectByLastName() {
+    public void testSelectByLastName() {
         Teacher lastName = teacherRepository.getByLastName("lastName");
         Assert.assertEquals("lastName", lastName.getLastName());
     }
 
     @Test
-    public void  testSelectById() {
+    public void testSelectById() {
         Long id = new Long(1);
         Teacher ivanov = teacherRepository.getById(id);
         Assert.assertEquals(id, ivanov.getId());
@@ -48,7 +43,7 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testAddTeacher() {
-        teacherServiceIml.addTeacher(new Teacher(new Long(1),"senya","yaf", 1.0));
+        teacherServiceIml.addTeacher(new Teacher(new Long(1), "senya", "yaf", 1.0));
     }
 
     @Test
@@ -56,10 +51,4 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
         Teacher senya2 = teacherServiceIml.addTeacher(new Teacher(new Long(2), "senya2", "yaf2", 2.0));
         teacherServiceIml.editTeacher(senya2);
     }
-
-
-
-
-
-
 }

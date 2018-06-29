@@ -2,7 +2,6 @@ package ru.context.practic.entity;
 
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +11,6 @@ public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @Column
-    private int num;
 
     @Column
     private Date startTime;
@@ -59,12 +55,5 @@ public class Timetable {
         this.amountSubjects = amountSubjects;
     }
 
-    public int getNum() {
-        return num;
-    }
-
-    public void setNumber(int num) {
-        this.num = num;
-    }
 }
 

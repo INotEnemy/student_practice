@@ -6,8 +6,6 @@ import ru.context.practic.entity.Teacher;
 import ru.context.practic.repository.TeacherRepository;
 import ru.context.practic.service.TeacherService;
 
-import java.util.List;
-
 @Service
 public class TeacherServiceImpl implements TeacherService {
 

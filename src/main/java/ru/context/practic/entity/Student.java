@@ -28,13 +28,13 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "attend_id")
-    private Attendance attendanceToday ;
+    private Attendance attendanceToday;
 
     public Student() {
     }
 
     public Student(Long id, String firstName, String lastName) {
-        this.id =  id;
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.level = 1;
@@ -82,5 +82,9 @@ public class Student {
 
     public void setBestMarkToday(double mark) {
         this.bestMarkToday.setMark(mark);
+    }
+
+    public Attendance getAttendanceToday() {
+        return attendanceToday;
     }
 }
