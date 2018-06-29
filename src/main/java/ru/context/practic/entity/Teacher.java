@@ -17,11 +17,13 @@ public class Teacher {
     @Column
     private String lastName;
 
-    @Column
-    private String department;
+    @ManyToOne
+    @JoinColumn(name = "dep_id")
+    private Department department;
 
-    @Column
-    private String post;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
     @Column
     private double load;
@@ -30,17 +32,13 @@ public class Teacher {
     @JoinColumn(name = "tt_id")
     private Timetable timetable;
 
-    //TODO Разобраться с настройкой зависимостей сущностей
-
     public Teacher() {
     }
 
-    public Teacher(Long id, String firstName, String lastName, String department, String post, double load) {
+    public Teacher(Long id, String firstName, String lastName, double load) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.department = department;
-        this.post = post;
         this.load = load;
     }
 
@@ -65,19 +63,19 @@ public class Teacher {
     }
 
     public String getDepartment() {
-        return department;
+        return department.getName();
     }
 
     public void setDepartment(String department) {
-        this.department = department;
+        this.department.setName(department);
     }
 
     public String getPost() {
-        return post;
+        return post.getName();
     }
 
     public void setPost(String post) {
-        this.post = post;
+        this.post.setName(post);
     }
 
     public double getLoad() {

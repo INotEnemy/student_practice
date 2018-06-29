@@ -2,6 +2,8 @@ package ru.context.practic.entity;
 
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,10 +17,10 @@ public class Timetable {
     private int num;
 
     @Column
-    private int startTime;
+    private Date startTime;
 
     @Column
-    private int endTime;
+    private Date endTime;
 
     @Column
     private String amountSubjects;
@@ -33,19 +35,19 @@ public class Timetable {
         return id;
     }
 
-    public int getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(int startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public int getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(int endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

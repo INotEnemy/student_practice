@@ -7,11 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import ru.context.practic.PracticApplicationTests;
 import ru.context.practic.entity.Teacher;
+import ru.context.practic.service.TeacherService;
+import ru.context.practic.service.impl.TeacherServiceImpl;
 
 import static org.junit.Assert.*;
 
 public class TeacherRepositoryTest extends PracticApplicationTests {
 
+
+    @Autowired
+    private TeacherServiceImpl teacherServiceIml;
 
     @Qualifier("teacherRepository")
     @Autowired
@@ -19,13 +24,13 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testSelect() {
-        Assert.assertEquals("Ожидаем, что в таблице n записей", 3, teacherRepository.count());
+        Assert.assertEquals("Ожидаем, что в таблице n записей", 1, teacherRepository.count());
     }
 
     @Test
     public void  testSelectByLastName() {
-        Teacher ivanov = teacherRepository.getByLastName("yasilev");
-        Assert.assertEquals("yasilev", ivanov.getLastName());
+        Teacher lastName = teacherRepository.getByLastName("lastName");
+        Assert.assertEquals("lastName", lastName.getLastName());
     }
 
     @Test
@@ -35,12 +40,22 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
         Assert.assertEquals(id, ivanov.getId());
     }
 
-//    @Test
-//    public void testDelTeacherById() {
-//        Long id = new Long(2);
-//        Assert.
-//                //TODO узнать как сделать тесты на удаление
-//    }
+    @Test
+    public void testDelTeacherById() {
+        Long id = new Long(1);
+        teacherServiceIml.delete(id);
+    }
+
+    @Test
+    public void testAddTeacher() {
+        teacherServiceIml.addTeacher(new Teacher(new Long(1),"senya","yaf", 1.0));
+    }
+
+    @Test
+    public void testEditTeacher() {
+        Teacher senya2 = teacherServiceIml.addTeacher(new Teacher(new Long(2), "senya2", "yaf2", 2.0));
+        teacherServiceIml.editTeacher(senya2);
+    }
 
 
 
