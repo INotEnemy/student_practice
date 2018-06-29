@@ -1,8 +1,11 @@
 package ru.context.practic.controller;
 
+import org.hibernate.bytecode.spi.ProxyFactoryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.context.practic.entity.Profession;
 import ru.context.practic.entity.Student;
+import ru.context.practic.repository.ProfessionRepository;
 import ru.context.practic.repository.StudentRepository;
 import ru.context.practic.service.StudentService;
 
@@ -12,6 +15,9 @@ public class StudentRestController {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    ProfessionRepository professionRepository;
 
     @Autowired
     StudentService studentService;
@@ -30,16 +36,19 @@ public class StudentRestController {
 
     @PostMapping(path = "/addH")
     public void addH() {
-        studentService.addStudent(new Student(new Long(3), "Harry", "Potter"));
+        Profession wizard = new Profession("wizard");
+        Profession profession = professionRepository.saveAndFlush(wizard);
+        studentService.addStudent(new Student(new Long(3), "Harry", "Potter", profession, 1, 5.0));
     }
 
-    @PostMapping(path = "/addR")
-    public void addR() {
-        studentService.addStudent(new Student(new Long(2), "Ronald", "Weasley"));
-    }
+//    @PostMapping(path = "/addR")
+//    public void addR() {
+//        studentService.addStudent(new Student(new Long(2), "Ronald", "Weasley",, 1, 4.9));
+//    }
 
-    @DeleteMapping(path = "/del")
+    @DeleteMapping(path = "/del/{id}")
+
     public void deleteStud() {
-        studentService.delete(new Long(3));
+        studentService.delete(new Long(2));
     }
 }

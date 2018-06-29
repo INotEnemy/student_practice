@@ -33,11 +33,15 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String firstName, String lastName) {
-        this.id = id;
+    public Student(Long id, String firstName, String lastName, Profession profession, int level, double marks) {
+        this.setProfession(profession);
+
+       // this.bestMarkToday = new Marks(marks);
         this.firstName = firstName;
         this.lastName = lastName;
-        this.level = 1;
+        this.level = level;
+        //this.attendanceToday.setAttendance(true);
+        // this.attendanceToday.setData("");
     }
 
     public Long getId() {
@@ -68,12 +72,12 @@ public class Student {
         this.level = level;
     }
 
-    public String getProfession() {
-        return profession.getProfession();
+    public Profession getProfession() {
+        return profession;
     }
 
-    public void setProfession(String profession) {
-        this.profession.setProfession(profession);
+    public void setProfession(Profession profession) {
+        this.profession = profession;
     }
 
     public double getBestMarkToday() {

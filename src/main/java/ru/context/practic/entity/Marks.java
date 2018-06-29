@@ -11,24 +11,33 @@ public class Marks {
     private Integer id;
 
     @Column
-    private Date data;
+    private Date date;
 
     @Column
     private double mark;
 
+
     @OneToMany(mappedBy = "bestMarkToday", fetch = FetchType.EAGER)
     private List<Student> students;
+
+    public Marks() {
+    }
+
+    public Marks(double mark) {
+        this.date = new Date();
+        this.mark = mark;
+    }
 
     public Integer getId() {
         return id;
     }
 
-    public Date getData() {
-        return data;
+    public Date getDate() {
+        return date;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public double getMark() {

@@ -40,15 +40,16 @@ public class StudentRepositoryTest extends PracticApplicationTests {
         Long id = new Long(4);
         studentService.delete(id);
     }
-
-    @Test
-    public void testAdd() {
-        studentService.addStudent(new Student(new Long(2), "Ronald", "Weasley"));
-    }
-
-    @Test
-    public void testEdit() {
-        Student senya2 = studentService.addStudent(new Student(new Long(1), "senya", "yaf"));
-        studentService.editStudent(senya2);
-    }
 }
+//    @Test
+//    public void testAdd() {
+//            studentService.addStudent(new Student(new Long(3), "Harry", "Potter", "wizard", 1, 5.0));
+//        }
+//
+//    }
+
+//    @Test
+//    public void testEdit() {
+//        studentService.editStudent();
+//    }
+

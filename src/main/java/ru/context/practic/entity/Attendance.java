@@ -16,6 +16,9 @@ public class Attendance {
     @Column
     private boolean attendance;
 
+    public Attendance() {
+    }
+
     @OneToMany(mappedBy = "attendanceToday", fetch = FetchType.EAGER)
     private List<Student> students;
 

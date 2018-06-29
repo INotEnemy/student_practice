@@ -12,6 +12,12 @@ public class Profession {
 
     @Column
     private String profession;
+    public Profession() {
+    }
+
+    public Profession(String profession) {
+        this.profession = profession;
+    }
 
     public Integer getId() {
         return id;
@@ -27,4 +33,6 @@ public class Profession {
     public void setProfession(String profession) {
         this.profession = profession;
     }
+
+
 }
