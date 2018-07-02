@@ -41,7 +41,7 @@ public class StudentRestController {
 
     @PostMapping
     public Student add(@RequestBody Student student) {
-     return  studentService.addStudent(student);
+     return  studentService.add(student);
     }
 
     @DeleteMapping(path = "/{id}")
@@ -52,6 +52,6 @@ public class StudentRestController {
     @PutMapping(path = "/{id}")
     public Student updateStud(@PathVariable("id") Long id,@RequestBody Student student){
         student.setId(id);
-        return studentService.updateStudent(student);
+        return studentService.update(student);
     }
 }

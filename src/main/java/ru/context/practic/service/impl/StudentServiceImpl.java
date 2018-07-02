@@ -14,14 +14,13 @@ public class StudentServiceImpl implements StudentService {
     StudentRepository studentRepository;
 
     @Override
-    public Student addStudent(Student student) {
+    public Student add(Student student) {
         return studentRepository.saveAndFlush(student);
     }
 
     @Override
     public void delete(Long id) {
-        Student studentToDelete = studentRepository.getOne(id);
-        studentRepository.delete(studentToDelete);
+        studentRepository.delete(studentRepository.getOne(id));
     }
 
     @Override
@@ -31,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student updateStudent(Student student) {
+    public Student update(Student student) {
         if(!studentRepository.exists(Example.of(student))){
             return studentRepository.save(student);
         }

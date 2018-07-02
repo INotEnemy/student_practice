@@ -8,7 +8,7 @@ import java.util.List;
 public class Marks {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column
     private Date date;
@@ -28,7 +28,7 @@ public class Marks {
         this.mark = mark;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
