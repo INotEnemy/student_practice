@@ -19,6 +19,11 @@ public class Attendance {
     public Attendance() {
     }
 
+    public Attendance(boolean attendance) {
+        this.data = new Date();
+        this.attendance = attendance;
+    }
+
     @OneToMany(mappedBy = "attendanceToday", fetch = FetchType.EAGER)
     private List<Student> students;
 

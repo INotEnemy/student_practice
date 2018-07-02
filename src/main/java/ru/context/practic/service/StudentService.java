@@ -1,5 +1,8 @@
 package ru.context.practic.service;
 
+import ru.context.practic.entity.Attendance;
+import ru.context.practic.entity.Marks;
+import ru.context.practic.entity.Profession;
 import ru.context.practic.entity.Student;
 
 
@@ -11,7 +14,7 @@ public interface StudentService {
 
     Student getByLastName(String name);
 
-    Student editStudent(Student student);
+    Student updateStudent(Student student);
 
     Student getById(Long id);
 }

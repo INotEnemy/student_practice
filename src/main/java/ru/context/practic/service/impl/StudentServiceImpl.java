@@ -1,6 +1,7 @@
 package ru.context.practic.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import ru.context.practic.entity.Student;
 import ru.context.practic.repository.StudentRepository;
@@ -25,16 +26,22 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getByLastName(String name) {
-        return null;
+        Student byLastName = studentRepository.getByLastName(name);
+        return  byLastName;
     }
 
     @Override
-    public Student editStudent(Student student) {
-        return null;
+    public Student updateStudent(Student student) {
+        if(!studentRepository.exists(Example.of(student))){
+            return studentRepository.save(student);
+        }
+        else {
+            throw new RuntimeException("Invalid");
+        }
     }
 
     @Override
     public Student getById(Long id) {
-        return null;
+        return studentRepository.getById(id);
     }
 }

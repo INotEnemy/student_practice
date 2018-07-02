@@ -33,21 +33,25 @@ public class Student {
     public Student() {
     }
 
-    public Student(Long id, String firstName, String lastName, Profession profession, int level, double marks) {
-        this.setProfession(profession);
 
-       // this.bestMarkToday = new Marks(marks);
+
+    public Student(Long id, String firstName, String lastName, Profession profession, int level, Marks marks, Attendance attendance) {
+        this.setProfession(profession);
+        this.setBestMarkToday(marks);
+        this.setAttendanceToday(attendance);
         this.firstName = firstName;
         this.lastName = lastName;
         this.level = level;
-        //this.attendanceToday.setAttendance(true);
-        // this.attendanceToday.setData("");
+
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -80,15 +84,19 @@ public class Student {
         this.profession = profession;
     }
 
-    public double getBestMarkToday() {
-        return bestMarkToday.getMark();
+    public Marks getBestMarkToday() {
+        return bestMarkToday ;
     }
 
-    public void setBestMarkToday(double mark) {
-        this.bestMarkToday.setMark(mark);
+    public void setBestMarkToday(Marks mark) {
+        this.bestMarkToday = mark;
     }
 
     public Attendance getAttendanceToday() {
         return attendanceToday;
+    }
+
+    public void setAttendanceToday(Attendance attendanceToday) {
+        this.attendanceToday = attendanceToday;
     }
 }

@@ -1,10 +1,10 @@
 package ru.context.practic.controller;
 
-import org.hibernate.bytecode.spi.ProxyFactoryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.context.practic.entity.Profession;
 import ru.context.practic.entity.Student;
+import ru.context.practic.repository.AttendanceRepository;
+import ru.context.practic.repository.MarksRepository;
 import ru.context.practic.repository.ProfessionRepository;
 import ru.context.practic.repository.StudentRepository;
 import ru.context.practic.service.StudentService;
@@ -22,33 +22,36 @@ public class StudentRestController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    MarksRepository marksRepository;
+
+    @Autowired
+    AttendanceRepository attendanceRepository;
+
     @GetMapping(path = "/findAll")
     public Iterable<Student> getAllStudents() {
         // This returns a JSON or XML with the users
         return studentRepository.findAll();
     }
 
-    @GetMapping(path = "/findById")
-    public Student getStudentById() {
-        Long id = new Long(1);
+    @GetMapping(path = "/{id}")
+    public Student getStudentById(@PathVariable("id") Long id) {
         return studentRepository.getById(id);
     }
 
-    @PostMapping(path = "/addH")
-    public void addH() {
-        Profession wizard = new Profession("wizard");
-        Profession profession = professionRepository.saveAndFlush(wizard);
-        studentService.addStudent(new Student(new Long(3), "Harry", "Potter", profession, 1, 5.0));
+    @PostMapping
+    public Student add(@RequestBody Student student) {
+     return  studentService.addStudent(student);
     }
 
-//    @PostMapping(path = "/addR")
-//    public void addR() {
-//        studentService.addStudent(new Student(new Long(2), "Ronald", "Weasley",, 1, 4.9));
-//    }
+    @DeleteMapping(path = "/{id}")
+    public void deleteStud(@PathVariable("id") Long id) {
+        studentService.delete(id);
+    }
 
-    @DeleteMapping(path = "/del/{id}")
-
-    public void deleteStud() {
-        studentService.delete(new Long(2));
+    @PutMapping(path = "/{id}")
+    public Student updateStud(@PathVariable("id") Long id,@RequestBody Student student){
+        student.setId(id);
+        return studentService.updateStudent(student);
     }
 }

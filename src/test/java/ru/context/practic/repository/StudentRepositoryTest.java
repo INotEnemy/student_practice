@@ -30,7 +30,7 @@ public class StudentRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testSelectById() {
-        Long id = new Long(1);
+        Long id = new Long(39);
         Student ivanov = studentRepository.getById(id);
         Assert.assertEquals(id, ivanov.getId());
     }
