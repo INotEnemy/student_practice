@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Department {
+public class Faculty {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,12 +13,8 @@ public class Department {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private List<Teacher> teachers;
-
-    @ManyToOne
-    @JoinColumn(name = "faculty_id")
-    private Faculty faculty;
+    @OneToMany(mappedBy = "faculty")
+    private List<Department> departments;
 
     public Integer getId() {
         return id;
@@ -34,5 +30,13 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 }
