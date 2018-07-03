@@ -1,6 +1,8 @@
 package ru.context.practic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.context.practic.entity.Student;
 import ru.context.practic.repository.AttendanceRepository;
@@ -9,8 +11,11 @@ import ru.context.practic.repository.ProfessionRepository;
 import ru.context.practic.repository.StudentRepository;
 import ru.context.practic.service.StudentService;
 
+import javax.management.relation.Role;
+
 @RestController
 @RequestMapping("/student")
+@Secured("ROLE_USER")
 public class StudentRestController {
 
     @Autowired
@@ -27,7 +32,6 @@ public class StudentRestController {
 
     @Autowired
     AttendanceRepository attendanceRepository;
-
     @GetMapping(path = "/findAll")
     public Iterable<Student> getAllStudents() {
         // This returns a JSON or XML with the users

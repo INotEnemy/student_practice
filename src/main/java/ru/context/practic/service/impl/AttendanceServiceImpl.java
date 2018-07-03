@@ -2,10 +2,11 @@ package ru.context.practic.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 import ru.context.practic.entity.Attendance;
 import ru.context.practic.repository.AttendanceRepository;
 import ru.context.practic.service.AttendanceService;
-
+@Service
 public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
     AttendanceRepository attendanceRepository;

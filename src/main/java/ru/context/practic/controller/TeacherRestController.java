@@ -1,7 +1,10 @@
 package ru.context.practic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.context.practic.entity.Teacher;
@@ -9,6 +12,7 @@ import ru.context.practic.repository.TeacherRepository;
 
 @RestController
 @RequestMapping("/teacher")
+@Secured("ROLE_ADMIN")
 public class TeacherRestController {
 
     @Autowired
@@ -20,9 +24,8 @@ public class TeacherRestController {
         return teacherRepository.findAll();
     }
 
-    @GetMapping(path = "/findById")
-    public Teacher getTeacherById() {
-        Long id = new Long(1);
+    @GetMapping(path = "/{id}")
+    public Teacher getTeacherById(@PathVariable("id") Long id) {
         return teacherRepository.getById(id);
     }
 }

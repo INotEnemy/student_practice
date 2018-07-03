@@ -19,18 +19,19 @@ public class StudentRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testSelect() {
-        Assert.assertEquals("Ожидаем, что в таблице n записей", 1, studentRepository.count());
+        Assert.assertEquals("Ожидаем, что в таблице n записей",
+                4, studentRepository.count());
     }
 
     @Test
     public void testSelectByLastName() {
-        Student lastName = studentRepository.getByLastName("Granger");
-        Assert.assertEquals("Granger", lastName.getLastName());
+        Student lastName = studentRepository.getByLastName("Potter");
+        Assert.assertEquals("Potter", lastName.getLastName());
     }
 
     @Test
     public void testSelectById() {
-        Long id = new Long(39);
+        Long id = new Long(1);
         Student ivanov = studentRepository.getById(id);
         Assert.assertEquals(id, ivanov.getId());
     }

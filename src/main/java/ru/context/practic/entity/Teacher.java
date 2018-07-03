@@ -46,6 +46,10 @@ public class Teacher {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -89,5 +93,6 @@ public class Teacher {
     public Timetable getTimetable() {
         return timetable;
     }
+
 
 }

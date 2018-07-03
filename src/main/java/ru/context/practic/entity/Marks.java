@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Marks {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long id;
 
     @Column

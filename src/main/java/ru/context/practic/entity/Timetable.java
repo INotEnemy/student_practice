@@ -9,7 +9,6 @@ import java.util.List;
 public class Timetable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column

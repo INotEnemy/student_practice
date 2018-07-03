@@ -7,7 +7,6 @@ import java.util.List;
 @Entity
 public class Attendance {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column

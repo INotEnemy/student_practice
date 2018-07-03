@@ -2,10 +2,11 @@ package ru.context.practic.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 import ru.context.practic.entity.Timetable;
 import ru.context.practic.repository.TimetableRepository;
 import ru.context.practic.service.TimetableService;
-
+@Service
 public class TimetableServiceImpl implements TimetableService {
     @Autowired
     TimetableRepository timetableRepository;

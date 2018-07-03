@@ -7,7 +7,6 @@ import java.util.List;
 public class Profession {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column
