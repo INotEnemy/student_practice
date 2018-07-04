@@ -15,6 +15,9 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Teacher> teachers;
 
+    @OneToMany(mappedBy = "department")
+    private List<Profession> profession;
+
     @ManyToOne
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;

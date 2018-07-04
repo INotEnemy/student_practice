@@ -11,6 +11,11 @@ public class Profession {
 
     @Column
     private String profession;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
     public Profession() {
     }
 

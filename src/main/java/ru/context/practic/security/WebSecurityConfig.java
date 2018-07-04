@@ -2,7 +2,6 @@ package ru.context.practic.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,8 +23,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/student/*").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/teacher/*").hasRole("ADMIN")
+                .antMatchers("/student/*").hasRole("USER")
+                .antMatchers("/teacher/*", "/marks/*", "/post*", "/timetable/*", "department/*")
+                .hasRole("ADMIN")
+                .antMatchers("/profession/*", "/faculty/*").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()

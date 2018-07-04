@@ -26,23 +26,15 @@ public class Student {
     @JoinColumn(name = "mark_id")
     private Marks bestMarkToday;
 
-    @ManyToOne
-    @JoinColumn(name = "attend_id")
-    private Attendance attendanceToday;
-
     public Student() {
     }
 
-
-
-    public Student(Long id, String firstName, String lastName, Profession profession, int level, Marks marks, Attendance attendance) {
+    public Student(Long id, String firstName, String lastName, Profession profession, int level, Marks marks) {
         this.setProfession(profession);
         this.setBestMarkToday(marks);
-        this.setAttendanceToday(attendance);
         this.firstName = firstName;
         this.lastName = lastName;
         this.level = level;
-
     }
 
     public Long getId() {
@@ -92,11 +84,4 @@ public class Student {
         this.bestMarkToday = mark;
     }
 
-    public Attendance getAttendanceToday() {
-        return attendanceToday;
-    }
-
-    public void setAttendanceToday(Attendance attendanceToday) {
-        this.attendanceToday = attendanceToday;
-    }
 }

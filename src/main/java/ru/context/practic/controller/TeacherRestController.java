@@ -2,13 +2,10 @@ package ru.context.practic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.context.practic.entity.Teacher;
 import ru.context.practic.repository.TeacherRepository;
+import ru.context.practic.service.TeacherService;
 
 @RestController
 @RequestMapping("/teacher")
@@ -17,6 +14,9 @@ public class TeacherRestController {
 
     @Autowired
     TeacherRepository teacherRepository;
+
+    @Autowired
+    TeacherService teacherService;
 
     @GetMapping(path = "/findAll")
     public Iterable<Teacher> getAllTeachers() {
@@ -28,4 +28,21 @@ public class TeacherRestController {
     public Teacher getTeacherById(@PathVariable("id") Long id) {
         return teacherRepository.getById(id);
     }
+
+    @PostMapping(path = "/{id}")
+    public Teacher add(@RequestBody Teacher teacher) {
+        return teacherService.addTeacher(teacher);
+    }
+
+    @PutMapping(path = "/{id}")
+    public Teacher update(@PathVariable("id") Long id, @RequestBody Teacher teacher) {
+        teacher.setId(id);
+       return teacherService.editTeacher(teacher);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable("id") Long id){
+        teacherService.delete(id);
+    }
+
 }

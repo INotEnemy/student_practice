@@ -2,16 +2,13 @@ package ru.context.practic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import ru.context.practic.entity.Marks;
 import ru.context.practic.entity.Student;
-import ru.context.practic.repository.AttendanceRepository;
-import ru.context.practic.repository.MarksRepository;
-import ru.context.practic.repository.ProfessionRepository;
-import ru.context.practic.repository.StudentRepository;
+import ru.context.practic.repository.*;
 import ru.context.practic.service.StudentService;
-
-import javax.management.relation.Role;
+import ru.context.practic.service.StudentStatisticService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -22,16 +19,11 @@ public class StudentRestController {
     StudentRepository studentRepository;
 
     @Autowired
-    ProfessionRepository professionRepository;
-
-    @Autowired
     StudentService studentService;
 
     @Autowired
-    MarksRepository marksRepository;
+    StudentStatisticService studentStatisticService;
 
-    @Autowired
-    AttendanceRepository attendanceRepository;
     @GetMapping(path = "/findAll")
     public Iterable<Student> getAllStudents() {
         // This returns a JSON or XML with the users
@@ -58,4 +50,15 @@ public class StudentRestController {
         student.setId(id);
         return studentService.update(student);
     }
+
+    @GetMapping(path = "/stat/{mode}")
+    public List<Marks> showStatistic(@PathVariable("mode") boolean mode) {
+        return studentStatisticService.showMarks(mode);
+    }
+
+    @GetMapping(path = "/stat/averge")
+    public double showStatistic() {
+        return studentStatisticService.averageMark();
+    }
+
 }
