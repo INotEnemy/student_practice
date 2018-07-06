@@ -24,18 +24,12 @@ public class MarksServiceImpl implements MarksService {
 
     @Override
     public Marks updateMarks(Marks marks) {
-        if(!marksRepository.exists(Example.of(marks))){
-            return marksRepository.save(marks);
-        }
-        else {
-            throw new RuntimeException("Invalid");
-        }
+        return marksRepository.save(marks);
     }
 
     @Override
     public Marks getById(Long id) {
         return marksRepository.getOne(id);
     }
-
 
 }

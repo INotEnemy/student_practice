@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface StudentStatisticService {
 
-    List<Marks> showMarks(boolean mode);
+    List<Marks> showMarks(Long id, boolean mode);
 
-    double averageMark();
+    String averageMark(Long id);
+
+    String attendance(Long id);
 }

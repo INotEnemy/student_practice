@@ -20,14 +20,19 @@ public class Timetable {
     @Column
     private String amountSubjects;
 
-    @OneToMany(mappedBy = "timetable", fetch = FetchType.EAGER)
-    private List<Teacher> teachers;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tech_id")
+    private Teacher teacher;
 
     public Timetable() {
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Date getStartTime() {
@@ -53,6 +58,7 @@ public class Timetable {
     public void setAmountSubjectsSubject(String amountSubjects) {
         this.amountSubjects = amountSubjects;
     }
+
 
 }
 

@@ -20,7 +20,7 @@ public class StudentRepositoryTest extends PracticApplicationTests {
     @Test
     public void testSelect() {
         Assert.assertEquals("Ожидаем, что в таблице n записей",
-                4, studentRepository.count());
+                2, studentRepository.count());
     }
 
     @Test

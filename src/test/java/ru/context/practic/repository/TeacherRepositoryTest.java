@@ -24,8 +24,8 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testSelectByLastName() {
-        Teacher lastName = teacherRepository.getByLastName("lastName");
-        Assert.assertEquals("lastName", lastName.getLastName());
+        Teacher lastName = teacherRepository.getByLastName("Snape");
+        Assert.assertEquals("Snape", lastName.getLastName());
     }
 
     @Test
@@ -37,13 +37,13 @@ public class TeacherRepositoryTest extends PracticApplicationTests {
 
     @Test
     public void testDelTeacherById() {
-        Long id = new Long(1);
+        Long id = new Long(19);
         teacherServiceIml.delete(id);
     }
 
     @Test
     public void testAddTeacher() {
-        teacherServiceIml.addTeacher(new Teacher(new Long(1), "senya", "yaf", 1.0));
+        teacherServiceIml.addTeacher(new Teacher(new Long(3), "senya", "yaf", 1.0));
     }
 
     @Test

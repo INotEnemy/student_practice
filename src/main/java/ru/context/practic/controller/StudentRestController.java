@@ -1,7 +1,6 @@
 package ru.context.practic.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import ru.context.practic.entity.Marks;
 import ru.context.practic.entity.Student;
@@ -12,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/student")
-@Secured("ROLE_USER")
 public class StudentRestController {
 
     @Autowired
@@ -35,7 +33,7 @@ public class StudentRestController {
         return studentRepository.getById(id);
     }
 
-    @PostMapping
+    @PostMapping(path = "/add")
     public Student add(@RequestBody Student student) {
      return  studentService.add(student);
     }
@@ -45,20 +43,25 @@ public class StudentRestController {
         studentService.delete(id);
     }
 
-    @PutMapping(path = "/{id}")
+    @PutMapping(path = "/up/{id}")
     public Student updateStud(@PathVariable("id") Long id,@RequestBody Student student){
         student.setId(id);
         return studentService.update(student);
     }
 
-    @GetMapping(path = "/stat/{mode}")
-    public List<Marks> showStatistic(@PathVariable("mode") boolean mode) {
-        return studentStatisticService.showMarks(mode);
+    @GetMapping(path = "/stat/{id},{mode}")
+    public List<Marks> showStatistic(@PathVariable("id") Long id,@PathVariable("mode") boolean mode) {
+        return studentStatisticService.showMarks(id,mode);
     }
 
-    @GetMapping(path = "/stat/averge")
-    public double showStatistic() {
-        return studentStatisticService.averageMark();
+    @GetMapping(path = "/stat/averge/{id}")
+    public String showStatistic(@PathVariable("id") Long id) {
+        return studentStatisticService.averageMark(id);
+    }
+
+    @GetMapping(path = "/stat/was/{id}")
+    public String attendance(@PathVariable("id") Long id) {
+        return studentStatisticService.attendance(id);
     }
 
 }

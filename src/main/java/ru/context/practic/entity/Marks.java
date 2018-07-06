@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 public class Marks {
     @Id
-
     private Long id;
 
     @Column
@@ -24,8 +23,10 @@ public class Marks {
     private double mark;
 
 
-    @OneToMany(mappedBy = "bestMarkToday", fetch = FetchType.EAGER)
-    private List<Student> students;
+    @ManyToOne(fetch = FetchType.EAGER)
+
+    @JoinColumn(name = "stud_id")
+    private Student student;
 
     public Marks() {
     }
@@ -40,6 +41,10 @@ public class Marks {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -74,7 +79,7 @@ public class Marks {
         this.subject = subject;
     }
 
-    public static Comparator<Marks> COMPARE = new Comparator<Marks>() {
+    public static Comparator<Marks> COMPARE_MARK = new Comparator<Marks>() {
         @Override
         public int compare(Marks m1, Marks m2) {
             if (m1.getMark() == m2.getMark()) return 0;

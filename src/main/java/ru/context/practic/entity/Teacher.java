@@ -3,6 +3,7 @@ package ru.context.practic.entity;
 import javax.persistence.*;
 import javax.persistence.criteria.Fetch;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -28,9 +29,8 @@ public class Teacher {
     @Column
     private double load;
 
-    @ManyToOne
-    @JoinColumn(name = "tt_id")
-    private Timetable timetable;
+    @OneToMany(mappedBy = "teacher")
+    private List<Timetable> timetable;
 
     public Teacher() {
     }
@@ -90,7 +90,7 @@ public class Teacher {
         this.load = load;
     }
 
-    public Timetable getTimetable() {
+    public List<Timetable> getTimetable() {
         return timetable;
     }
 

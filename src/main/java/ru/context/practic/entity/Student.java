@@ -1,6 +1,7 @@
 package ru.context.practic.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -22,14 +23,13 @@ public class Student {
     @Column
     private int level;
 
-    @ManyToOne
-    @JoinColumn(name = "mark_id")
-    private Marks bestMarkToday;
+    @OneToMany(mappedBy = "student")
+    private List<Marks> bestMarkToday;
 
     public Student() {
     }
 
-    public Student(Long id, String firstName, String lastName, Profession profession, int level, Marks marks) {
+    public Student(Long id, String firstName, String lastName, Profession profession, int level, List<Marks> marks) {
         this.setProfession(profession);
         this.setBestMarkToday(marks);
         this.firstName = firstName;
@@ -76,11 +76,11 @@ public class Student {
         this.profession = profession;
     }
 
-    public Marks getBestMarkToday() {
+    public List<Marks> getBestMarkToday() {
         return bestMarkToday ;
     }
 
-    public void setBestMarkToday(Marks mark) {
+    public void setBestMarkToday(List<Marks> mark) {
         this.bestMarkToday = mark;
     }
 
